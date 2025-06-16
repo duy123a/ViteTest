@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="text-red-500 text-xl font-bold">Hello Tailwind!</div>
+    <img src="~/images/01.jpg" />
+</div>
+
+@section Scripts {
+    <script>
+        const waitForMyApp = setInterval(() => {
+            if (window.myApp && window.myApp.showAlert) {
+                clearInterval(waitForMyApp);
+                myApp.showAlert("Chạy sau khi main.js đã load!");
+            }
+        }, 50);
+
+        window.addEventListener('myApp:indexReady', () => {
+            const img = document.createElement('img');
+            img.src = myApp.indexImage;
+            img.alt = 'Ảnh từ index.js';
+            document.body.appendChild(img);
+        }, { once: true });
+    </script>
+}
